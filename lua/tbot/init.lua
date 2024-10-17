@@ -5,10 +5,10 @@ local createBuffer = function ()
     HEIGHT = vim.api.nvim_get_option("lines")
     vim.api.nvim_open_win(vim.api.nvim_create_buf(false, true), true, {
             relative = 'editor',
-            width = math.floor(WIDTH / 9),
+            width = math.floor(WIDTH / 3),
             height = math.floor(HEIGHT / 1.1),
             col = WIDTH,
-            row = 5,
+            row = 1,
             anchor = "NE",
             style = 'minimal',
             border = 'single'
