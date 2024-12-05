@@ -18,7 +18,7 @@ end
 local InteractiveChat = function()
 	createBuffer()
 	vim.api.nvim_command("startinsert")
-	vim.fn.termopen("tgpt -i", {
+	vim.fn.termopen("tgpt -i --provider duckduckgo", {
 		on_exit = function()
 			local win_id = vim.api.nvim_get_current_win()
 			vim.api.nvim_win_close(win_id, true)
@@ -28,14 +28,14 @@ end
 
 local RateMyCode = function()
 	local file = vim.api.nvim_buf_get_name(0)
-	local prompt = "cat " .. file .. " | tgpt 'Rate the code' "
+	local prompt = "cat " .. file .. " | tgpt --provider duckduckgo 'Rate the code' "
 	createBuffer()
 	vim.fn.termopen(prompt)
 end
 
 local CheckForBugs = function()
 	local file = vim.api.nvim_buf_get_name(0)
-	local prompt = "cat " .. file .. " | tgpt 'Check for bugs' "
+	local prompt = "cat " .. file .. " | tgpt --provider duckduckgo 'Check for bugs' "
 	createBuffer()
 	vim.fn.termopen(prompt)
 end
