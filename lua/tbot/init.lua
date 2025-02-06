@@ -18,7 +18,7 @@ end
 local InteractiveChat = function()
 	createBuffer()
 	vim.api.nvim_command("startinsert")
-	vim.fn.termopen("http_proxy='' HTTP_PROXY='' tgpt -i --provider openai --model 'deepseek-r1:14b' --url 'http://localhost:11434/v1/chat/completions'", {
+	vim.fn.termopen("http_proxy='' HTTP_PROXY='' tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions'", {
 		on_exit = function()
 			local win_id = vim.api.nvim_get_current_win()
 			vim.api.nvim_win_close(win_id, true)
@@ -28,14 +28,14 @@ end
 
 local RateMyCode = function()
 	local file = vim.api.nvim_buf_get_name(0)
-	local prompt = "http_proxy='' HTTP_PROXY='' cat " .. file .. " | tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions' 'Rate the code' "
+	local prompt = "cat " .. file .. " | tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions' 'Rate the code' "
 	createBuffer()
 	vim.fn.termopen(prompt)
 end
 
 local CheckForBugs = function()
 	local file = vim.api.nvim_buf_get_name(0)
-	local prompt = "http_proxy='' HTTP_PROXY='' cat " .. file .. " | tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions' 'Check for bugs' "
+	local prompt = "cat " .. file .. " | tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions' 'Check for bugs' "
 	createBuffer()
 	vim.fn.termopen(prompt)
 end
