@@ -28,14 +28,14 @@ end
 
 local RateMyCode = function()
 	local file = vim.api.nvim_buf_get_name(0)
-	local prompt = "cat " .. file .. " | http_proxy='' HTTP_PROXY='' tgpt -i --provider openai --model 'deepseek-r1:14b' --url 'http://localhost:11434/v1/chat/completions' 'Rate the code' "
+	local prompt = "http_proxy='' HTTP_PROXY='' cat " .. file .. " | tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions' 'Rate the code' "
 	createBuffer()
 	vim.fn.termopen(prompt)
 end
 
 local CheckForBugs = function()
 	local file = vim.api.nvim_buf_get_name(0)
-	local prompt = "cat " .. file .. " |  http_proxy='' HTTP_PROXY='' tgpt -i --provider openai --model 'deepseek-r1:14b' --url 'http://localhost:11434/v1/chat/completions' 'Check for bugs' "
+	local prompt = "http_proxy='' HTTP_PROXY='' cat " .. file .. " | tgpt -i --provider openai --model 'deepseek-r1:32b' --url 'http://localhost:11434/v1/chat/completions' 'Check for bugs' "
 	createBuffer()
 	vim.fn.termopen(prompt)
 end
